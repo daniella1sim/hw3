@@ -93,7 +93,8 @@ static long device_ioctl(struct file *file, unsigned int ioctl_command_id, unsig
     unsigned int channel_id = (unsigned int)ioctl_param;
 
     if (ioctl_command_id != MESSAGE_SLOT_CHANNEL || channel_id == 0){
-
+        printk("Error: invalid argument")
+        return EINVAL;
     }
     
     struct channel *chan = slot->channels;
@@ -107,7 +108,8 @@ static long device_ioctl(struct file *file, unsigned int ioctl_command_id, unsig
     if (!chan){
         chan = kmalloc(sizeof(struct channel), GFP_KERNEL);
         if (!chan){
-
+            printk("Error: could not allocate memory");
+            return -ENOMEM
         }
         chan->id = channel_id;
         chan->message_len = 0;
@@ -147,15 +149,15 @@ static struct file_operation fops = {
 static void __init message_slot_init(void){
     int ret = register_chrdev(MAJOR_NUM, DEVICE_NAME, &fops)
     if (ret < 0){
-        printk()
+        printk(KERN_ERR, "Error: %s could not init for %d\n", DEVICE_NAME, MAJOR_NUMBER)
         return ret;
     }
-    printk()
     return 0;
 }
 
 static void __exit message_slot_exit(void){
-    for (int i = 0; i < 256; i++){
+    int i;
+    for (i = 0; i < 256; i++){
         free_massage_slot(device_table[i]);
     }
     unregister_chrdev(MAJOR_NUM, DEVICE_NAME);
