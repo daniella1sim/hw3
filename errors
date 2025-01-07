@@ -1,110 +1,14 @@
 make -C /lib/modules/5.10.0-21-amd64/build M=/home/student/hw3 modules
 make[1]: Entering directory '/usr/src/linux-headers-5.10.0-21-amd64'
+
   CC [M]  /home/student/hw3/message_slot.o
-In file included from /usr/src/linux-headers-5.10.0-21-common/include/linux/printk.h:7,
-                 from /usr/src/linux-headers-5.10.0-21-common/include/linux/kernel.h:16,
-                 from /home/student/hw3/message_slot.c:6:
-/home/student/hw3/message_slot.c: In function 'device_open':
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:5:18: warning: too many arguments for format [-Wformat-extra-args]
-    5 | #define KERN_SOH "\001"  /* ASCII Start Of Header */
-      |                  ^~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:11:18: note: in expansion of macro 'KERN_SOH'
-   11 | #define KERN_ERR KERN_SOH "3" /* error conditions */
-      |                  ^~~~~~~~
-/home/student/hw3/message_slot.c:23:16: note: in expansion of macro 'KERN_ERR'
-   23 |         printk(KERN_ERR, "Error: failed to allocate memory for message\n");
-      |                ^~~~~~~~
 /home/student/hw3/message_slot.c: In function 'device_write':
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:5:18: warning: too many arguments for format [-Wformat-extra-args]
-    5 | #define KERN_SOH "\001"  /* ASCII Start Of Header */
-      |                  ^~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:11:18: note: in expansion of macro 'KERN_SOH'
-   11 | #define KERN_ERR KERN_SOH "3" /* error conditions */
-      |                  ^~~~~~~~
-/home/student/hw3/message_slot.c:36:16: note: in expansion of macro 'KERN_ERR'
-   36 |         printk(KERN_ERR, "Error: buffer pointer is NULL");
-      |                ^~~~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:5:18: warning: too many arguments for format [-Wformat-extra-args]
-    5 | #define KERN_SOH "\001"  /* ASCII Start Of Header */
-      |                  ^~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:11:18: note: in expansion of macro 'KERN_SOH'
-   11 | #define KERN_ERR KERN_SOH "3" /* error conditions */
-      |                  ^~~~~~~~
-/home/student/hw3/message_slot.c:43:16: note: in expansion of macro 'KERN_ERR'
-   43 |         printk(KERN_ERR, "Error: channel not set correctly\n");
-      |                ^~~~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:5:18: warning: too many arguments for format [-Wformat-extra-args]
-    5 | #define KERN_SOH "\001"  /* ASCII Start Of Header */
-      |                  ^~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:11:18: note: in expansion of macro 'KERN_SOH'
-   11 | #define KERN_ERR KERN_SOH "3" /* error conditions */
-      |                  ^~~~~~~~
-/home/student/hw3/message_slot.c:48:16: note: in expansion of macro 'KERN_ERR'
-   48 |         printk(KERN_ERR, "Error: message len should be between 1 and 128\n");
-      |                ^~~~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:5:18: warning: too many arguments for format [-Wformat-extra-args]
-    5 | #define KERN_SOH "\001"  /* ASCII Start Of Header */
-      |                  ^~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:11:18: note: in expansion of macro 'KERN_SOH'
-   11 | #define KERN_ERR KERN_SOH "3" /* error conditions */
-      |                  ^~~~~~~~
-/home/student/hw3/message_slot.c:53:16: note: in expansion of macro 'KERN_ERR'
-   53 |         printk(KERN_ERR, "Error: failed to copy message\n");
-      |                ^~~~~~~~
 /home/student/hw3/message_slot.c:56:40: warning: format '%d' expects argument of type 'int', but argument 2 has type 'struct channel *' [-Wformat=]
    56 |     printk("wrote messge from channel %d and minor %d", chan, iminor(file->f_inode));
       |                                       ~^                ~~~~
       |                                        |                |
       |                                        int              struct channel *
-In file included from /usr/src/linux-headers-5.10.0-21-common/include/linux/printk.h:7,
-                 from /usr/src/linux-headers-5.10.0-21-common/include/linux/kernel.h:16,
-                 from /home/student/hw3/message_slot.c:6:
 /home/student/hw3/message_slot.c: In function 'device_read':
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:5:18: warning: too many arguments for format [-Wformat-extra-args]
-    5 | #define KERN_SOH "\001"  /* ASCII Start Of Header */
-      |                  ^~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:11:18: note: in expansion of macro 'KERN_SOH'
-   11 | #define KERN_ERR KERN_SOH "3" /* error conditions */
-      |                  ^~~~~~~~
-/home/student/hw3/message_slot.c:64:16: note: in expansion of macro 'KERN_ERR'
-   64 |         printk(KERN_ERR, "Error: buffer pointer is NULL");
-      |                ^~~~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:5:18: warning: too many arguments for format [-Wformat-extra-args]
-    5 | #define KERN_SOH "\001"  /* ASCII Start Of Header */
-      |                  ^~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:11:18: note: in expansion of macro 'KERN_SOH'
-   11 | #define KERN_ERR KERN_SOH "3" /* error conditions */
-      |                  ^~~~~~~~
-/home/student/hw3/message_slot.c:70:16: note: in expansion of macro 'KERN_ERR'
-   70 |         printk(KERN_ERR, "Error: channel not set correctly\n");
-      |                ^~~~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:5:18: warning: too many arguments for format [-Wformat-extra-args]
-    5 | #define KERN_SOH "\001"  /* ASCII Start Of Header */
-      |                  ^~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:11:18: note: in expansion of macro 'KERN_SOH'
-   11 | #define KERN_ERR KERN_SOH "3" /* error conditions */
-      |                  ^~~~~~~~
-/home/student/hw3/message_slot.c:75:16: note: in expansion of macro 'KERN_ERR'
-   75 |         printk(KERN_ERR, "Error: no message in channel\n");
-      |                ^~~~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:5:18: warning: too many arguments for format [-Wformat-extra-args]
-    5 | #define KERN_SOH "\001"  /* ASCII Start Of Header */
-      |                  ^~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:11:18: note: in expansion of macro 'KERN_SOH'
-   11 | #define KERN_ERR KERN_SOH "3" /* error conditions */
-      |                  ^~~~~~~~
-/home/student/hw3/message_slot.c:80:16: note: in expansion of macro 'KERN_ERR'
-   80 |         printk(KERN_ERR, "Error: buffer too small\n");
-      |                ^~~~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:5:18: warning: too many arguments for format [-Wformat-extra-args]
-    5 | #define KERN_SOH "\001"  /* ASCII Start Of Header */
-      |                  ^~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:11:18: note: in expansion of macro 'KERN_SOH'
-   11 | #define KERN_ERR KERN_SOH "3" /* error conditions */
-      |                  ^~~~~~~~
-/home/student/hw3/message_slot.c:85:16: note: in expansion of macro 'KERN_ERR'
-   85 |         printk(KERN_ERR, "Error: failed to copy message\n");
-      |                ^~~~~~~~
 /home/student/hw3/message_slot.c:88:39: warning: format '%d' expects argument of type 'int', but argument 2 has type 'struct channel *' [-Wformat=]
    88 |     printk("read messge from channel %d and minor %d", chan, iminor(file->f_inode));
       |                                      ~^                ~~~~
@@ -119,19 +23,6 @@ In file included from /usr/src/linux-headers-5.10.0-21-common/include/linux/prin
   151 |     .write = device_write,
       |              ^~~~~~~~~~~~
 /home/student/hw3/message_slot.c:151:14: note: (near initialization for 'fops.write')
-In file included from /usr/src/linux-headers-5.10.0-21-common/include/linux/printk.h:7,
-                 from /usr/src/linux-headers-5.10.0-21-common/include/linux/kernel.h:16,
-                 from /home/student/hw3/message_slot.c:6:
-/home/student/hw3/message_slot.c: In function 'message_slot_init':
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:5:18: warning: too many arguments for format [-Wformat-extra-args]
-    5 | #define KERN_SOH "\001"  /* ASCII Start Of Header */
-      |                  ^~~~~~
-/usr/src/linux-headers-5.10.0-21-common/include/linux/kern_levels.h:11:18: note: in expansion of macro 'KERN_SOH'
-   11 | #define KERN_ERR KERN_SOH "3" /* error conditions */
-      |                  ^~~~~~~~
-/home/student/hw3/message_slot.c:159:16: note: in expansion of macro 'KERN_ERR'
-  159 |         printk(KERN_ERR, "device regirtration failed for %d\n", MAJOR_NUMBER);
-      |                ^~~~~~~~
 cc1: some warnings being treated as errors
 make[3]: *** [/usr/src/linux-headers-5.10.0-21-common/scripts/Makefile.build:291: /home/student/hw3/message_slot.o] Error 1
 make[2]: *** [/usr/src/linux-headers-5.10.0-21-common/Makefile:1861: /home/student/hw3] Error 2
