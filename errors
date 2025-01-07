@@ -1,0 +1,8 @@
+make -C /lib/modules/5.10.0-21-amd64/build M=/home/student/hw3 modules
+make[1]: Entering directory '/usr/src/linux-headers-5.10.0-21-amd64'
+/usr/src/linux-headers-5.10.0-21-common/scripts/Makefile.build:44: /home/student/hw3/Makefile: No such file or directory
+make[3]: *** No rule to make target '/home/student/hw3/Makefile'.  Stop.
+make[2]: *** [/usr/src/linux-headers-5.10.0-21-common/Makefile:1861: /home/student/hw3] Error 2
+make[1]: *** [/usr/src/linux-headers-5.10.0-21-common/Makefile:185: __sub-make] Error 2
+make[1]: Leaving directory '/usr/src/linux-headers-5.10.0-21-amd64'
+make: *** [makefile:6: all] Error 2
