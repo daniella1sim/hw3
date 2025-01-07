@@ -1,24 +1,28 @@
-make -C /lib/modules/5.10.0-21-amd64/build M=/home/student/hw3 modules
-make[1]: Entering directory '/usr/src/linux-headers-5.10.0-21-amd64'
-  CC [M]  /home/student/hw3/message_slot.o
-/home/student/hw3/message_slot.c: In function 'device_write':
-/home/student/hw3/message_slot.c:56:40: warning: format '%d' expects argument of type 'int', but argument 2 has type 'struct channel *' [-Wformat=]
-   56 |     printk("wrote messge from channel %d and minor %d", chan, iminor(file->f_inode));
-      |                                       ~^                ~~~~
-      |                                        |                |
-      |                                        int              struct channel *
-/home/student/hw3/message_slot.c: In function 'device_ioctl':
-/home/student/hw3/message_slot.c:96:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
-   96 |     struct channel *chan;
-      |     ^~~~~~
-/home/student/hw3/message_slot.c: At top level:
-/home/student/hw3/message_slot.c:151:14: error: initialization of 'ssize_t (*)(struct file *, const char *, size_t,  loff_t *)' {aka 'long int (*)(struct file *, const char *, long unsigned int,  long long int *)'} from incompatible pointer type 'ssize_t (*)(struct file *, char *, size_t,  loff_t *)' {aka 'long int (*)(struct file *, char *, long unsigned int,  long long int *)'} [-Werror=incompatible-pointer-types]
-  151 |     .write = device_write,
-      |              ^~~~~~~~~~~~
-/home/student/hw3/message_slot.c:151:14: note: (near initialization for 'fops.write')
-cc1: some warnings being treated as errors
-make[3]: *** [/usr/src/linux-headers-5.10.0-21-common/scripts/Makefile.build:291: /home/student/hw3/message_slot.o] Error 1
-make[2]: *** [/usr/src/linux-headers-5.10.0-21-common/Makefile:1861: /home/student/hw3] Error 2
-make[1]: *** [/usr/src/linux-headers-5.10.0-21-common/Makefile:185: __sub-make] Error 2
-make[1]: Leaving directory '/usr/src/linux-headers-5.10.0-21-amd64'
-make: *** [makefile:6: all] Error 2
+void test1()
+{
+	int device0_fd;
+	size_t bytes_written;
+	size_t bytes_read;
+	char msg[128];
+
+	device0_fd = open(DEV0, O_RDWR);
+	if (device0_fd < 0)
+	{ print_failure(1); exit(0); }
+
+	if (ioctl(device0_fd, MSG_SLOT_CHANNEL, 6) < 0)
+	{ print_failure(1); exit(0); }
+
+	bytes_written = write(device0_fd, "Hello World!", 12);
+	if (bytes_written < 12)
+	{ print_failure(1); exit(0); }
+
+	bytes_read = read(device0_fd, msg, 128);
+	if (bytes_read < 12)
+	{ print_failure(1); exit(0); }
+
+	msg[12] = '\0';
+	if (strcmp(msg, "Hello World!"))
+	{ print_failure(1); exit(0); }
+
+	print_success(1);
+}
