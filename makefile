@@ -1,7 +1,10 @@
-obj-m := message_slot.obj
+obj-m := message_slot.o
 KDIR := /lib/modules/$(shell uname -r)/build
+PWD := $(shell pwd)
 
 all:
-	$(MAKE) -c $(KDIR) M=$(shell pwd) modules
+	$(MAKE) -C $(KDIR) M=$(PWD) modules
+	gcc -O3 -Wall -std=c11 message_sender.c -o message_sender.o
+	gcc -O3 -Wall -std=c11 message_reader.c -o message_reader.o
 clean:
-	$(MAKE) -c $(KDIR) M=$(shell pwd) clean
+	$(MAKE) -C $(KDIR) M=$(PWD) clean
