@@ -1,6 +1,5 @@
 make -C /lib/modules/5.10.0-21-amd64/build M=/home/student/hw3 modules
 make[1]: Entering directory '/usr/src/linux-headers-5.10.0-21-amd64'
-
   CC [M]  /home/student/hw3/message_slot.o
 /home/student/hw3/message_slot.c: In function 'device_write':
 /home/student/hw3/message_slot.c:56:40: warning: format '%d' expects argument of type 'int', but argument 2 has type 'struct channel *' [-Wformat=]
@@ -8,12 +7,6 @@ make[1]: Entering directory '/usr/src/linux-headers-5.10.0-21-amd64'
       |                                       ~^                ~~~~
       |                                        |                |
       |                                        int              struct channel *
-/home/student/hw3/message_slot.c: In function 'device_read':
-/home/student/hw3/message_slot.c:88:39: warning: format '%d' expects argument of type 'int', but argument 2 has type 'struct channel *' [-Wformat=]
-   88 |     printk("read messge from channel %d and minor %d", chan, iminor(file->f_inode));
-      |                                      ~^                ~~~~
-      |                                       |                |
-      |                                       int              struct channel *
 /home/student/hw3/message_slot.c: In function 'device_ioctl':
 /home/student/hw3/message_slot.c:96:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
    96 |     struct channel *chan;
