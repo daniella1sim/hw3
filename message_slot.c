@@ -133,11 +133,14 @@ static ssize_t device_read(struct file *file, char __user *buffer, size_t len, l
 
 static void free_channels(struct channel *chan){
     struct channel *tmp;
+    printk(KERN_INFO "free_channels: start\n");
     while (chan){
         tmp = chan;
         chan = chan->next;
+        printk(KERN_INFO "free_channels: freeing channel with ID %u\n", tmp->id);
         kfree(tmp);
     }
+    printk(KERN_INFO "free_channels: finish");
 }
 
 static struct file_operations fops = {
