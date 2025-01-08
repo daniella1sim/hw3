@@ -1,4 +1,7 @@
-mesg: read kernel buffer failed: Operation not permitted
+459758.899420] message_slot: loading out-of-tree module taints kernel.
+[459758.899927] message_slot: module verification failed: signature and/or required key missing - tainting kernel
+[460605.931537]  message_slot_exit+0x2e/0xcc5 [message_slot]
+[460605.931973] Modules linked in: message_slot(OE-) bnep bluetooth 8021q garp stp mrp llc vboxsf iptable_nat nf_nat jitterentropy_rng nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c drbg ansi_cprng iptable_mangle ecdh_generic iptable_filter rfkill ecc ghash_clmulni_intel aesni_intel libaes crypto_simd snd_intel8x0 snd_ac97_codec ac97_bus snd_pcm joydev cryptd glue_helper pcspkr snd_timer serio_raw snd sg ac soundcore evdev vboxguest parport_pc ppdev lp parport fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic sr_mod vmwgfx cdrom ata_generic ttm drm_kms_helper cec ahci libahci ata_piix drm crct10dif_pclmul crct10dif_common ohci_pci libata crc32_pclmul ohci_hcd crc32c_intel scsi_mod psmouse ehci_pci ehci_hcd i2c_piix4 usbcore battery usb_common e1000 video button
 
 
 
