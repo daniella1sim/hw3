@@ -36,6 +36,7 @@ static long device_ioctl(struct file *file, unsigned int ioctl_command_id, unsig
     struct channel *chan;
     unsigned int channel_id = (unsigned int)ioctl_param;;
 
+    
     if (ioctl_command_id != MSG_SLOT_CHANNEL || channel_id == 0){
         printk("Error: invalid arguments. either channel ID is 0 or the ioctl command is not MSG_SLOT_CHANNEL\n");
         return -EINVAL;
@@ -176,7 +177,7 @@ static void __exit message_slot_exit(void){
         if (device_table[i].channel_list){
             printk(KERN_INFO "message slot exit: freeing channel for minior %d\n",i);
 
-            free_channels(&(device_table[i].channel_list));
+            free_channels(device_table[i].channel_list);
             device_table[i].channel_list = NULL;    
         }
     }
