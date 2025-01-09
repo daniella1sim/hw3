@@ -25,7 +25,9 @@ static int device_open(struct inode *inode, struct file *file){
     }
 
     slot = &device_table[minor];
+    slot->active = NULL;
     file->private_data = slot;
+
     printk(KERN_INFO "device opened - minor %u\n",minor);
     return 0;
 }
@@ -85,8 +87,9 @@ static ssize_t device_write(struct file *file, const char __user *buffer, size_t
         printk(KERN_ERR "Error: message_slot is NULL\n");
         return -EINVAL;
     }
+
     chan = slot->active;
-    printk(KERN_INFO "actiue:%p\n",chan);
+    printk(KERN_INFO "active:%p\n",chan);
     
     if (chan == NULL || chan->id == 0){
         printk(KERN_ERR "Error: no channel selected\n");
@@ -118,6 +121,8 @@ static ssize_t device_read(struct file *file, char __user *buffer, size_t len, l
     struct channel *chan;
     struct message_slot *slot = (struct message_slot *)file->private_data;
     
+    printk(KERN_INFO "device_read: minor=%u slot=%p\n",iminor(file->f_inode), slot);
+
     if (slot == NULL){
         printk(KERN_ERR "Error: message_slot is NULL\n");
         return -EINVAL;
