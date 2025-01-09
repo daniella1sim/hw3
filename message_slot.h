@@ -4,8 +4,8 @@
 
 #define BUFFER_SIZE 128
 #define MAJOR_NUMBER 235
-#define MESSAGE_SLOT_CHANNEL _IOW(MAJOR_NUMBER, 0, unsigned int)
-#define DEVICE_NAME "message slot"
+#define MSG_SLOT_CHANNEL _IOW(MAJOR_NUMBER, 0, unsigned int)
+#define DEVICE_NAME "message_slot"
 
 struct channel{
     unsigned int id;
@@ -16,6 +16,7 @@ struct channel{
 
 struct message_slot{
     struct channel *channel_list;
+    struct channel *active;
 };
 
 #endif
