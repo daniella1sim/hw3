@@ -48,7 +48,6 @@ static long device_ioctl(struct file *file, unsigned int ioctl_command_id, unsig
         return EINVAL;
     }
 
-
     chan = slot->channel_list;
     while (chan){
         if (chan->id == channel_id){
@@ -77,7 +76,6 @@ static long device_ioctl(struct file *file, unsigned int ioctl_command_id, unsig
 
 static ssize_t device_write(struct file *file, const char __user *buffer, size_t len, loff_t *offset){
     struct channel *chan = file->private_data;
-    int minor =  iminor(file->f_inode);
     
     if (chan == NULL || chan->id == 0){
         printk(KERN_ERR "Error: channel not set correctly\n");
