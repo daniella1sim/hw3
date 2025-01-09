@@ -41,12 +41,13 @@ static long device_ioctl(struct file *file, unsigned int ioctl_command_id, unsig
         printk("Error: invalid arguments. either channel ID is 0 or the ioctl command is not MSG_SLOT_CHANNEL\n");
         return -EINVAL;
     }
-    ////
+
     slot = (struct message_slot *)file->private_data;
     if (slot == NULL){
         printk(KERN_ERR "Error: file->private_data is NULL");
         return EINVAL;
     }
+    printk(KERN_INFO "device_ioctl: minor=%u, channel=%u", iminor(file->f_inode),channel_id);
 
     chan = slot->channel_list;
     while (chan){
@@ -67,7 +68,7 @@ static long device_ioctl(struct file *file, unsigned int ioctl_command_id, unsig
     chan->message_len = 0;
     chan->next = slot->channel_list;
     slot->channel_list = chan;
-    ////
+
     slot->active = chan;
     printk(KERN_INFO "device ioctl created new channel\n");
     return 0;
@@ -78,14 +79,17 @@ static ssize_t device_write(struct file *file, const char __user *buffer, size_t
     struct channel *chan;
     struct message_slot *slot = (struct message_slot *)file->private_data;
 
+    printk(KERN_INFO "device_write: minor=%u slot=%p\n",iminor(file->f_inode), slot);
+
     if (slot == NULL){
         printk(KERN_ERR "Error: message_slot is NULL\n");
         return -EINVAL;
     }
     chan = slot->active;
-
+    printk(KERN_INFO "actiue:%p\n",chan);
+    
     if (chan == NULL || chan->id == 0){
-        printk(KERN_ERR "Error: channel not set correctly\n");
+        printk(KERN_ERR "Error: no channel selected\n");
         return -EINVAL;
     } 
     
@@ -105,7 +109,7 @@ static ssize_t device_write(struct file *file, const char __user *buffer, size_t
     }
     
     chan->message_len = len;
-    printk(KERN_INFO "wrote messge from channel %u and minor %u of %ld bytes\n", chan->id, iminor(file->f_inode),len);
+    printk(KERN_INFO "device_write:wrote messge from channel %u and minor %u of %ld bytes\n", chan->id, iminor(file->f_inode),len);
     return len;
 }
 
