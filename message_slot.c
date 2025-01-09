@@ -41,8 +41,8 @@ static long device_ioctl(struct file *file, unsigned int ioctl_command_id, unsig
         printk("Error: invalid arguments. either channel ID is 0 or the ioctl command is not MSG_SLOT_CHANNEL\n");
         return -EINVAL;
     }
-    
-    slot = file->private_data;
+    ////
+    slot = (struct message_slot *)file->private_data;
     if (slot == NULL){
         printk(KERN_ERR "Error: file->private_data is NULL");
         return EINVAL;
@@ -51,7 +51,7 @@ static long device_ioctl(struct file *file, unsigned int ioctl_command_id, unsig
     chan = slot->channel_list;
     while (chan){
         if (chan->id == channel_id){
-            file->private_data = chan;
+            slot->active = chan;
             printk(KERN_INFO "device ioctl found existing channel ID %u\n",channel_id);
             return 0;
         }
@@ -67,16 +67,23 @@ static long device_ioctl(struct file *file, unsigned int ioctl_command_id, unsig
     chan->message_len = 0;
     chan->next = slot->channel_list;
     slot->channel_list = chan;
-    
-    file->private_data = chan;
+    ////
+    slot->active = chan;
     printk(KERN_INFO "device ioctl created new channel\n");
     return 0;
 }
 
 
 static ssize_t device_write(struct file *file, const char __user *buffer, size_t len, loff_t *offset){
-    struct channel *chan = file->private_data;
-    
+    struct channel *chan;
+    struct message_slot *slot = (struct message_slot *)file->private_data;
+
+    if (slot == NULL){
+        printk(KERN_ERR "Error: message_slot is NULL\n");
+        return -EINVAL;
+    }
+    chan = slot->active;
+
     if (chan == NULL || chan->id == 0){
         printk(KERN_ERR "Error: channel not set correctly\n");
         return -EINVAL;
@@ -104,8 +111,15 @@ static ssize_t device_write(struct file *file, const char __user *buffer, size_t
 
 
 static ssize_t device_read(struct file *file, char __user *buffer, size_t len, loff_t *offset){
-    struct channel *chan = file->private_data;
+    struct channel *chan;
+    struct message_slot *slot = (struct message_slot *)file->private_data;
     
+    if (slot == NULL){
+        printk(KERN_ERR "Error: message_slot is NULL\n");
+        return -EINVAL;
+    }
+    
+    chan = slot->active;
     if (chan == NULL || chan->id == 0){
         printk(KERN_ERR "Error: channel not set correctly\n");
         return -EINVAL;
@@ -167,6 +181,7 @@ static int __init message_slot_init(void){
 
     for (i = 0; i < 257; i++){
         device_table[i].channel_list = NULL;
+        device_table[i].active = NULL;
         printk(KERN_INFO "message slot init:initialized slot %d\n",i);
             
     }
@@ -186,6 +201,7 @@ static void __exit message_slot_exit(void){
 
             free_channels(device_table[i].channel_list);
             device_table[i].channel_list = NULL;    
+            device_table[i].active = NULL;    
         }
     }
     unregister_chrdev(MAJOR_NUMBER, DEVICE_NAME);
