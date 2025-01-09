@@ -1,336 +1,192 @@
-0 ES: 0000 CR0: 0000000080050033
-[406550.770910] CR2: 0000053c0009c000 CR3: 00000000087fa002 CR4: 00000000000306f0
-[406550.770910] Call Trace:
-[406550.770910]  <IRQ>
-[406550.770911]  __sysvec_call_function_single+0x18/0xa0
-[406550.770911]  asm_call_irq_on_stack+0xf/0x20
-[406550.770912]  </IRQ>
-[406550.770912]  sysvec_call_function_single+0x72/0x80
-[406550.770912]  asm_sysvec_call_function_single+0x12/0x20
-[406550.770913] RIP: 0010:native_safe_halt+0xe/0x20
-[406550.770914] Code: 00 f0 80 48 02 20 48 8b 00 a8 08 75 c0 e9 77 ff ff ff cc cc cc cc cc cc cc cc cc cc e9 07 00 00 00 0f 00 2d b6 8e 50 00 fb f4 <c3> cc cc cc cc 66 66 2e 0f 1f 84 00 00 00 00 00 66 90 e9 07 00 00
-[406550.770914] RSP: 0018:ffffffff95603eb8 EFLAGS: 00010212
-[406550.770915] RAX: ffffffff94900f20 RBX: 0000000000000000 RCX: ffff891c7dc34940
-[406550.770940] RDX: 000000000b86e67e RSI: 7ffe9244943a09c7 RDI: 0000000000000082
-[406550.770942] RBP: ffffffff95613940 R08: 000000cd42e4dffb R09: 00016dbb6c400838
-[406550.770943] R10: 0000000000000000 R11: 0000000000000001 R12: 0000000000000000
-[406550.770943] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
-[406550.770944]  ? __sched_text_end+0x6/0x6
-[406550.770944]  default_idle+0xa/0x20
-[406550.770945]  default_idle_call+0x3c/0xd0
-[406550.770945]  do_idle+0x20c/0x2b0
-[406550.770945]  cpu_startup_entry+0x19/0x20
-[406550.770946]  start_kernel+0x574/0x599
-[406550.770946]  secondary_startup_64_no_verify+0xb0/0xbb
-[406550.770994] NMI backtrace for cpu 1
-[406550.771000] CPU: 1 PID: 604 Comm: Xorg Tainted: G             L    5.10.0-21-amd64 #1 Debian 5.10.162-1
-[406550.771002] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
-[406550.771003] Call Trace:
-[406550.771059]  <IRQ>
-[406550.771068]  dump_stack+0x6b/0x83
-[406550.771071]  nmi_cpu_backtrace.cold+0x32/0x69
-[406550.771194]  ? lapic_can_unplug_cpu+0x80/0x80
-[406550.771199]  nmi_trigger_cpumask_backtrace+0xdf/0xf0
-[406550.771202]  rcu_dump_cpu_stacks+0xa2/0xd4
-[406550.771204]  rcu_sched_clock_irq.cold+0x1ff/0x3d6
-[406550.771208]  update_process_times+0x8c/0xc0
-[406550.771211]  tick_sched_handle+0x22/0x60
-[406550.771261]  tick_sched_timer+0x80/0xc0
-[406550.771265]  ? tick_do_update_jiffies64.part.0+0xc0/0xc0
-[406550.771267]  __hrtimer_run_queues+0x127/0x280
-[406550.771269]  hrtimer_interrupt+0x110/0x2c0
-[406550.771271]  __sysvec_apic_timer_interrupt+0x5c/0xe0
-[406550.771274]  asm_call_irq_on_stack+0xf/0x20
-[406550.771276]  </IRQ>
-[406550.771278]  sysvec_apic_timer_interrupt+0x72/0x80
-[406550.771281]  asm_sysvec_apic_timer_interrupt+0x12/0x20
-[406550.771327] RIP: 0010:_raw_spin_lock+0x12/0x30
-[406550.771335] Code: 07 a9 ff 01 00 00 75 05 c3 cc cc cc cc e9 76 27 7f ff 66 0f 1f 44 00 00 0f 1f 44 00 00 31 c0 ba 01 00 00 00 f0 0f b1 17 75 05 <c3> cc cc cc cc 89 c6 e8 f2 10 7f ff 66 90 c3 cc cc cc cc 66 66 2e
-[406550.771340] RSP: 0018:ffffabd5c03f3848 EFLAGS: 00010246
-[406550.771349] RAX: 0000000000000000 RBX: ffff891c07cbdd00 RCX: 0000000000000001
-[406550.771352] RDX: 0000000000000001 RSI: ffff891c1f752888 RDI: ffff891c1f643348
-[406550.771356] RBP: 000000000b561000 R08: ffff891c1f752888 R09: ffff891c1f752888
-[406550.771360] R10: 00000000000000bd R11: ffff891c1f643000 R12: ffff891c1f643348
-[406550.771364] R13: ffff891c1f643000 R14: ffff891c1f643000 R15: dead000000000100
-[406550.771757]  vmw_cmdbuf_header_submit+0x72/0xb0 [vmwgfx]
-[406550.772099]  vmw_cmdbuf_ctx_submit+0xb1/0xe0 [vmwgfx]
-[406550.772154]  vmw_cmdbuf_ctx_process+0x28/0x270 [vmwgfx]
-[406550.772167]  vmw_cmdbuf_man_process+0x59/0x100 [vmwgfx]
-[406550.772175]  __vmw_cmdbuf_cur_flush+0xad/0xf0 [vmwgfx]
-[406550.772182]  vmw_cmdbuf_commit+0x6d/0xb0 [vmwgfx]
-[406550.772190]  vmw_fifo_send_fence+0x74/0x130 [vmwgfx]
-[406550.772413]  vmw_execbuf_fence_commands+0x50/0x110 [vmwgfx]
-[406550.772550]  vmw_kms_helper_validation_finish+0x71/0x170 [vmwgfx]
-[406550.772831]  vmw_du_helper_plane_update+0x2ca/0x340 [vmwgfx]
-[406550.772842]  vmw_sou_plane_update_bo.constprop.0+0x86/0xb0 [vmwgfx]
-[406550.772896]  ? vmw_sou_crtc_atomic_enable+0x10/0x10 [vmwgfx]
-[406550.772904]  ? vmw_sou_crtc_mode_set_nofb+0x1f0/0x1f0 [vmwgfx]
-[406550.772912]  ? vmw_sou_bo_fifo_size+0x10/0x10 [vmwgfx]
-[406550.772919]  ? vmw_sou_bo_populate_clip+0x40/0x40 [vmwgfx]
-[406550.772926]  vmw_sou_primary_plane_atomic_update+0x102/0x150 [vmwgfx]
-[406550.774400]  drm_atomic_helper_commit_planes+0xb5/0x230 [drm_kms_helper]
-[406550.775003]  drm_atomic_helper_commit_tail+0x42/0x80 [drm_kms_helper]
-[406550.775013]  commit_tail+0xd2/0x130 [drm_kms_helper]
-[406550.775039]  drm_atomic_helper_commit+0x11b/0x140 [drm_kms_helper]
-[406550.775046]  drm_atomic_helper_dirtyfb+0x188/0x260 [drm_kms_helper]
-[406550.776668]  drm_mode_dirtyfb_ioctl+0xf9/0x1d0 [drm]
-[406550.777312]  ? drm_mode_getfb2_ioctl+0x2d0/0x2d0 [drm]
-[406550.777326]  drm_ioctl_kernel+0xac/0x100 [drm]
-[406550.777969]  drm_ioctl+0x224/0x3c0 [drm]
-[406550.777983]  ? drm_mode_getfb2_ioctl+0x2d0/0x2d0 [drm]
-[406550.777988]  ? do_setitimer+0x196/0x230
-[406550.777997]  ? drm_version+0x90/0x90 [drm]
-[406550.778004]  vmw_generic_ioctl+0xa8/0x150 [vmwgfx]
-[406550.778009]  __x64_sys_ioctl+0x88/0xc0
-[406550.779850]  do_syscall_64+0x30/0x80
-[406550.779858]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
-[406550.779868] RIP: 0033:0x7f52a8e2b5f7
-[406550.779873] Code: 00 00 00 48 8b 05 99 c8 0d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 69 c8 0d 00 f7 d8 64 89 01 48
-[406550.779873] RSP: 002b:00007ffe1ea9d0c8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
-[406550.779875] RAX: ffffffffffffffda RBX: 00007ffe1ea9d100 RCX: 00007f52a8e2b5f7
-[406550.779876] RDX: 00007ffe1ea9d100 RSI: 00000000c01864b1 RDI: 0000000000000010
-[406550.779877] RBP: 00000000c01864b1 R08: 00007ffe1ea9d130 R09: 000000000000000c
-[406550.779878] R10: 000000000000000c R11: 0000000000000246 R12: 000055f5d7620170
-[406550.779910] R13: 0000000000000010 R14: 000055f5d7620178 R15: 000055f5d6da9700
-[406550.805856] 12:34:30.795992 timesync vgsvcTimeSyncWorker: Radical host time change: 4 376 825 000 000ns (HostNow=1 736 253 274 976 000 000 
-[406550.806206] 12:34:30.798055 timesync vgsvcTimeSyncWorker: Radical guest time change: 4 370 616 297 000ns (GuestNow=1 736 253 270 795 968 00
-[406550.874193] systemd[1]: systemd-journald.service: Main process exited, code=killed, status=6/ABRT
-[406550.874469] systemd[1]: systemd-journald.service: Failed with result 'watchdog'.
-[406550.882978] systemd[1]: systemd-journald.service: Scheduled restart job, restart counter is at 39.
-[406550.885655] systemd[1]: Stopping Flush Journal to Persistent Storage...
-[406551.121651] systemd[1]: anacron.service: Succeeded.
-[406551.134147] systemd[1]: systemd-journal-flush.service: Succeeded.
-[406551.135047] systemd[1]: Stopped Flush Journal to Persistent Storage.
-[406551.135549] systemd[1]: Stopped Journal Service.
-[406551.143149] systemd[1]: Starting Journal Service...
-[406551.231943] systemd-journald[32441]: File /var/log/journal/a56fef3d88d84e05a7dc5f00499770f5/system.journal corrupted or uncleanly shut down, renaming and replacing.
-[406551.293474] systemd[1]: Started Journal Service.
-[406551.308112] systemd-journald[32441]: Received client request to flush runtime journal.
-[412334.737485] watchdog: BUG: soft lockup - CPU#1 stuck for 633s! [swapper/1:0]
-[412334.737491] Modules linked in: bnep bluetooth 8021q garp stp mrp llc vboxsf iptable_nat nf_nat jitterentropy_rng nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c drbg ansi_cprng iptable_mangle ecdh_generic iptable_filter rfkill ecc ghash_clmulni_intel aesni_intel libaes crypto_simd snd_intel8x0 snd_ac97_codec ac97_bus snd_pcm joydev cryptd glue_helper pcspkr snd_timer serio_raw snd sg ac soundcore evdev vboxguest parport_pc ppdev lp parport fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic sr_mod vmwgfx cdrom ata_generic ttm drm_kms_helper cec ahci libahci ata_piix drm crct10dif_pclmul crct10dif_common ohci_pci libata crc32_pclmul ohci_hcd crc32c_intel scsi_mod psmouse ehci_pci ehci_hcd i2c_piix4 usbcore battery usb_common e1000 video button
-[412334.737661] CPU: 1 PID: 0 Comm: swapper/1 Tainted: G             L    5.10.0-21-amd64 #1 Debian 5.10.162-1
-[412334.737663] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
-[412334.737671] RIP: 0010:native_safe_halt+0xe/0x20
-[412334.737674] Code: 00 f0 80 48 02 20 48 8b 00 a8 08 75 c0 e9 77 ff ff ff cc cc cc cc cc cc cc cc cc cc e9 07 00 00 00 0f 00 2d b6 8e 50 00 fb f4 <c3> cc cc cc cc 66 66 2e 0f 1f 84 00 00 00 00 00 66 90 e9 07 00 00
-[412334.737675] RSP: 0018:ffffabd5c0083ef0 EFLAGS: 00010282
-[412334.737677] RAX: ffffffff94900f20 RBX: 0000000000000001 RCX: ffff891c7dd34940
-[412334.737678] RDX: 00000000f15ea296 RSI: 0000000000000082 RDI: 0000000000000082
-[412334.737679] RBP: ffff891c01222d00 R08: 0000000000000000 R09: 0000000000002800
-[412334.737679] R10: 0000000000002800 R11: 0000000000000000 R12: 0000000000000000
-[412334.737680] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
-[412334.737682] FS:  0000000000000000(0000) GS:ffff891c7dd00000(0000) knlGS:0000000000000000
-[412334.737683] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[412334.737684] CR2: 00007f39ec164000 CR3: 00000000087fa003 CR4: 00000000000306e0
-[412334.737686] Call Trace:
-[412334.737690]  default_idle+0xa/0x20
-[412334.737692]  default_idle_call+0x3c/0xd0
-[412334.737696]  do_idle+0x20c/0x2b0
-[412334.737701]  cpu_startup_entry+0x19/0x20
-[412334.737705]  secondary_startup_64_no_verify+0xb0/0xbb
-[412334.748437] systemd[1]: systemd-logind.service: Watchdog timeout (limit 3min)!
-[412334.748528] systemd[1]: systemd-logind.service: Killing process 11112 (systemd-logind) with signal SIGABRT.
-[412334.760832] systemd[1]: systemd-journald.service: Main process exited, code=killed, status=6/ABRT
-[412334.760913] systemd[1]: systemd-journald.service: Failed with result 'watchdog'.
-[412334.764946] systemd[1]: systemd-journald.service: Scheduled restart job, restart counter is at 40.
-[412334.768465] systemd[1]: Stopping Flush Journal to Persistent Storage...
-[412334.854836] systemd[1]: systemd-logind.service: Main process exited, code=killed, status=6/ABRT
-[412334.854887] systemd[1]: systemd-logind.service: Failed with result 'watchdog'.
-[412334.856693] systemd[1]: systemd-logind.service: Scheduled restart job, restart counter is at 10.
-[412334.856712] systemd[1]: Stopped User Login Management.
-[412334.872738] systemd[1]: Starting Load Kernel Module drm...
-[412335.008097] systemd[1]: systemd-journal-flush.service: Succeeded.
-[412335.008362] systemd[1]: Stopped Flush Journal to Persistent Storage.
-[412335.008549] systemd[1]: Stopped Journal Service.
-[412335.015214] systemd[1]: Starting Journal Service...
-[412335.043671] systemd[1]: modprobe@drm.service: Succeeded.
-[412335.044054] systemd[1]: Finished Load Kernel Module drm.
-[412335.073729] systemd[1]: Starting User Login Management...
-[412335.184291] systemd[1]: Started User Login Management.
-[412335.192120] systemd[1]: Started Journal Service.
-[412335.213065] systemd-journald[34654]: Received client request to flush runtime journal.
-[414429.977352] watchdog: BUG: soft lockup - CPU#1 stuck for 1463s! [swapper/1:0]
-[414429.977362] Modules linked in: bnep bluetooth 8021q garp stp mrp llc vboxsf iptable_nat nf_nat jitterentropy_rng nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c drbg ansi_cprng iptable_mangle ecdh_generic iptable_filter rfkill ecc ghash_clmulni_intel aesni_intel libaes crypto_simd snd_intel8x0 snd_ac97_codec ac97_bus snd_pcm joydev cryptd glue_helper pcspkr snd_timer serio_raw snd sg ac soundcore evdev vboxguest parport_pc ppdev lp parport fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic sr_mod vmwgfx cdrom ata_generic ttm drm_kms_helper cec ahci libahci ata_piix drm crct10dif_pclmul crct10dif_common ohci_pci libata crc32_pclmul ohci_hcd crc32c_intel scsi_mod psmouse ehci_pci ehci_hcd i2c_piix4 usbcore battery usb_common e1000 video button
-[414429.977471] CPU: 1 PID: 0 Comm: swapper/1 Tainted: G             L    5.10.0-21-amd64 #1 Debian 5.10.162-1
-[414429.977472] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
-[414429.977483] RIP: 0010:native_safe_halt+0xe/0x20
-[414429.977486] Code: 00 f0 80 48 02 20 48 8b 00 a8 08 75 c0 e9 77 ff ff ff cc cc cc cc cc cc cc cc cc cc e9 07 00 00 00 0f 00 2d b6 8e 50 00 fb f4 <c3> cc cc cc cc 66 66 2e 0f 1f 84 00 00 00 00 00 66 90 e9 07 00 00
-[414429.977487] RSP: 0018:ffffabd5c0083ef0 EFLAGS: 00010286
-[414429.977489] RAX: ffffffff94900f20 RBX: 0000000000000001 RCX: ffff891c7dd34940
-[414429.977490] RDX: 00000000f49ef826 RSI: 0000000000000082 RDI: 0000000000000082
-[414429.977491] RBP: ffff891c01222d00 R08: 0000000000000000 R09: 0001777e20e66971
-[414429.977492] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
-[414429.977492] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
-[414429.977494] FS:  0000000000000000(0000) GS:ffff891c7dd00000(0000) knlGS:0000000000000000
-[414429.977495] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[414429.977496] CR2: 0000053c0009c000 CR3: 00000000087fa004 CR4: 00000000000306e0
-[414429.977499] Call Trace:
-[414429.977504]  default_idle+0xa/0x20
-[414429.977506]  default_idle_call+0x3c/0xd0
-[414429.977590]  do_idle+0x20c/0x2b0
-[414429.977599]  cpu_startup_entry+0x19/0x20
-[414429.977602]  secondary_startup_64_no_verify+0xb0/0xbb
-[421358.545734] watchdog: BUG: soft lockup - CPU#1 stuck for 214s! [swapper/1:0]
-[421358.545923] Modules linked in: bnep bluetooth 8021q garp stp mrp llc vboxsf iptable_nat nf_nat jitterentropy_rng nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c drbg ansi_cprng iptable_mangle ecdh_generic iptable_filter rfkill ecc ghash_clmulni_intel aesni_intel libaes crypto_simd snd_intel8x0 snd_ac97_codec ac97_bus snd_pcm joydev cryptd glue_helper pcspkr snd_timer serio_raw snd sg ac soundcore evdev vboxguest parport_pc ppdev lp parport fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic sr_mod vmwgfx cdrom ata_generic ttm drm_kms_helper cec ahci libahci ata_piix drm crct10dif_pclmul crct10dif_common ohci_pci libata crc32_pclmul ohci_hcd crc32c_intel scsi_mod psmouse ehci_pci ehci_hcd i2c_piix4 usbcore battery usb_common e1000 video button
-[421358.551635] CPU: 1 PID: 0 Comm: swapper/1 Tainted: G             L    5.10.0-21-amd64 #1 Debian 5.10.162-1
-[421358.551701] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
-[421358.552310] RIP: 0010:native_safe_halt+0xe/0x20
-[421358.552315] Code: 00 f0 80 48 02 20 48 8b 00 a8 08 75 c0 e9 77 ff ff ff cc cc cc cc cc cc cc cc cc cc e9 07 00 00 00 0f 00 2d b6 8e 50 00 fb f4 <c3> cc cc cc cc 66 66 2e 0f 1f 84 00 00 00 00 00 66 90 e9 07 00 00
-[421358.552370] RSP: 0018:ffffabd5c0083ef0 EFLAGS: 00010206
-[421358.552373] RAX: ffffffff94900f20 RBX: 0000000000000001 RCX: ffff891c7dd34940
-[421358.552374] RDX: 000000001ab539d6 RSI: 0000000000000082 RDI: 0000000000000082
-[421358.552375] RBP: ffff891c01222d00 R08: 0000000000000000 R09: 0000000000008400
-[421358.552375] R10: 0000000000008400 R11: 0000000000000000 R12: 0000000000000000
-[421358.552376] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
-[421358.552377] FS:  0000000000000000(0000) GS:ffff891c7dd00000(0000) knlGS:0000000000000000
-[421358.552378] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[421358.552379] CR2: 0000171c0070e800 CR3: 0000000009faa004 CR4: 00000000000306e0
-[421358.552411] Call Trace:
-[421358.552700]  default_idle+0xa/0x20
-[421358.552704]  default_idle_call+0x3c/0xd0
-[421358.553193]  do_idle+0x20c/0x2b0
-[421358.553619]  cpu_startup_entry+0x19/0x20
-[421358.553714]  secondary_startup_64_no_verify+0xb0/0xbb
-[439812.469588] watchdog: BUG: soft lockup - CPU#1 stuck for 16623s! [swapper/1:0]
-[439812.469633] Modules linked in: bnep bluetooth 8021q garp stp mrp llc vboxsf iptable_nat nf_nat jitterentropy_rng nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c drbg ansi_cprng iptable_mangle ecdh_generic iptable_filter rfkill ecc ghash_clmulni_intel aesni_intel libaes crypto_simd snd_intel8x0 snd_ac97_codec ac97_bus snd_pcm joydev cryptd glue_helper pcspkr snd_timer serio_raw snd sg ac soundcore evdev vboxguest parport_pc ppdev lp parport fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic sr_mod vmwgfx cdrom ata_generic ttm drm_kms_helper cec ahci libahci ata_piix drm crct10dif_pclmul crct10dif_common ohci_pci libata crc32_pclmul ohci_hcd crc32c_intel scsi_mod psmouse ehci_pci ehci_hcd i2c_piix4 usbcore battery usb_common e1000 video button
-[439812.471701] CPU: 1 PID: 0 Comm: swapper/1 Tainted: G             L    5.10.0-21-amd64 #1 Debian 5.10.162-1
-[439812.471702] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
-[439812.472238] RIP: 0010:rebalance_domains+0x21d/0x3c0
-[439812.472244] Code: 89 dd 4c 89 f3 49 89 c6 45 85 ff 0f 84 f8 fe ff ff 8b 05 02 4a 79 01 4c 39 f0 49 0f 42 c6 48 89 85 10 0b 00 00 e9 df fe ff ff <48> 63 44 24 20 c7 44 24 0c 00 00 00 00 49 c7 c1 40 3c 03 00 48 89
-[439812.472245] RSP: 0018:ffffabd5c00b8f30 EFLAGS: 00010246
-[439812.472247] RAX: 0000000000000000 RBX: 0000000000000007 RCX: 0000000000000000
-[439812.472248] RDX: 0000000000000001 RSI: 0000000000000000 RDI: ffff891c7dd33c40
-[439812.472357] RBP: ffff891c7dd33c40 R08: 00000000000003ce R09: 0000000000000045
-[439812.472358] R10: 0000000000011400 R11: 0000000000000000 R12: 0000000000000000
-[439812.472359] R13: 0000000000000007 R14: ffffffff956060f8 R15: 0000000000000020
-[439812.472436] FS:  0000000000000000(0000) GS:ffff891c7dd00000(0000) knlGS:0000000000000000
-[439812.472494] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[439812.472495] CR2: 00003c1c000b6000 CR3: 00000000087fa002 CR4: 00000000000306e0
-[439812.472499] Call Trace:
-[439812.472700]  <IRQ>
-[439812.472899]  ? kvm_clock_get_cycles+0xd/0x20
-[439812.473064]  ? ktime_get+0x35/0xa0
-[439812.473187]  __do_softirq+0xc2/0x279
-[439812.473296]  asm_call_irq_on_stack+0xf/0x20
-[439812.473325]  </IRQ>
-[439812.473347]  do_softirq_own_stack+0x37/0x50
-[439812.473474]  irq_exit_rcu+0x92/0xc0
-[439812.473594]  sysvec_apic_timer_interrupt+0x36/0x80
-[439812.473673]  asm_sysvec_apic_timer_interrupt+0x12/0x20
-[439812.473677] RIP: 0010:native_safe_halt+0xe/0x20
-[439812.473680] Code: 00 f0 80 48 02 20 48 8b 00 a8 08 75 c0 e9 77 ff ff ff cc cc cc cc cc cc cc cc cc cc e9 07 00 00 00 0f 00 2d b6 8e 50 00 fb f4 <c3> cc cc cc cc 66 66 2e 0f 1f 84 00 00 00 00 00 66 90 e9 07 00 00
-[439812.473681] RSP: 0018:ffffabd5c0083ef0 EFLAGS: 00010216
-[439812.473684] RAX: ffffffff94900f20 RBX: 0000000000000001 RCX: ffff891c7dd34940
-[439812.473685] RDX: 000000001e5afbbe RSI: 0000000000000082 RDI: 0000000000000082
-[439812.473686] RBP: ffff891c01222d00 R08: 0000000000000000 R09: 00017fc6f02f362b
-[439812.473687] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
-[439812.473688] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
-[439812.473690]  ? __sched_text_end+0x6/0x6
-[439812.473741]  default_idle+0xa/0x20
-[439812.473743]  default_idle_call+0x3c/0xd0
-[439812.473760]  do_idle+0x20c/0x2b0
-[439812.473788]  cpu_startup_entry+0x19/0x20
-[439812.473817]  secondary_startup_64_no_verify+0xb0/0xbb
-[439812.582069] 21:48:56.753919 timesync vgsvcTimeSyncWorker: Radical guest time change: 17 853 687 689 000ns (GuestNow=1 736 286 536 653 553 0
-[439812.617582] systemd[1]: systemd-journald.service: Main process exited, code=killed, status=6/ABRT
-[439812.617678] systemd[1]: systemd-journald.service: Failed with result 'watchdog'.
-[439812.627769] systemd[1]: systemd-journald.service: Scheduled restart job, restart counter is at 41.
-[439812.637293] systemd[1]: Stopping Flush Journal to Persistent Storage...
-[439812.722950] systemd[1]: anacron.service: Succeeded.
-[439812.748350] systemd[1]: systemd-journal-flush.service: Succeeded.
-[439812.748650] systemd[1]: Stopped Flush Journal to Persistent Storage.
-[439812.749024] systemd[1]: Stopped Journal Service.
-[439812.760353] systemd[1]: Starting Journal Service...
-[439812.986746] systemd-journald[42273]: File /var/log/journal/a56fef3d88d84e05a7dc5f00499770f5/system.journal corrupted or uncleanly shut down, renaming and replacing.
-[439813.066666] systemd[1]: Started Journal Service.
-[439813.078578] systemd-journald[42273]: Received client request to flush runtime journal.
-[457567.359512] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
-[457567.359523]         (detected by 1, t=39426 jiffies, g=10949549, q=1)
-[457567.359539] rcu: All QSes seen, last rcu_sched kthread activity 39426 (4404873026-4404833600), jiffies_till_next_fqs=1, root ->qsmask 0x0
-[457567.359542] rcu: rcu_sched kthread starved for 39426 jiffies! g10949549 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x200 ->cpu=1
-[457567.359543] rcu:    Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
-[457567.359544] rcu: RCU grace-period kthread stack dump:
-[457567.359575] task:rcu_sched       state:R stack:    0 pid:   12 ppid:     2 flags:0x00004000
-[457567.359579] Call Trace:
-[457567.359594]  __schedule+0x282/0x870
-[457567.359610]  schedule+0x46/0xb0
-[457567.359613]  schedule_timeout+0x8b/0x150
-[457567.359617]  ? __next_timer_interrupt+0x110/0x110
-[457567.359648]  rcu_gp_kthread+0x51b/0xbc0
-[457567.359807]  ? rcu_cpu_kthread+0x190/0x190
-[457567.359898]  kthread+0x118/0x140
-[457567.359967]  ? __kthread_bind_mask+0x60/0x60
-[457567.359971]  ret_from_fork+0x1f/0x30
-[457567.360202] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
-[457567.360207]         (detected by 1, t=4437473 jiffies, g=10949549, q=1)
-[457567.360209] rcu: All QSes seen, last rcu_sched kthread activity 4437473 (4409271073-4404833600), jiffies_till_next_fqs=1, root ->qsmask 0x0
-[457567.360212] rcu: rcu_sched kthread starved for 4437473 jiffies! g10949549 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x200 ->cpu=1
-[457567.360213] rcu:    Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
-[457567.360214] rcu: RCU grace-period kthread stack dump:
-[457567.360216] task:rcu_sched       state:R stack:    0 pid:   12 ppid:     2 flags:0x00004000
-[457567.360218] Call Trace:
-[457567.360224]  __schedule+0x282/0x870
-[457567.360227]  schedule+0x46/0xb0
-[457567.360228]  schedule_timeout+0x8b/0x150
-[457567.360231]  ? __next_timer_interrupt+0x110/0x110
-[457567.360234]  rcu_gp_kthread+0x51b/0xbc0
-[457567.360236]  ? rcu_cpu_kthread+0x190/0x190
-[457567.360238]  kthread+0x118/0x140
-[457567.360240]  ? __kthread_bind_mask+0x60/0x60
-[457567.360243]  ret_from_fork+0x1f/0x30
-[457567.384207] 02:44:51.556260 timesync vgsvcTimeSyncWorker: Radical guest time change: 17 754 902 695 000ns (GuestNow=1 736 304 291 556 248 0
-[457577.429741] 07:14:28.026551 timesync vgsvcTimeSyncWorker: Radical host time change: 16 176 458 000 000ns (HostNow=1 736 320 468 026 000 000
-[457587.438074] 07:14:38.034169 timesync vgsvcTimeSyncWorker: Radical guest time change: 16 176 433 685 000ns (GuestNow=1 736 320 478 034 082 0
-[459758.899420] message_slot: loading out-of-tree module taints kernel.
-[459758.899927] message_slot: module verification failed: signature and/or required key missing - tainting kernel
-[459758.911666] Message slot module loaded
-[459812.371120] wrote messge from channel 6 and minor 0
-[459812.371123] read messge from channel 6 and minor 0
-[459812.371142] wrote messge from channel 99 and minor 0
-[459812.371143] wrote messge from channel 99 and minor 1
-[459812.371144] read messge from channel 99 and minor 0
-[459812.371144] read messge from channel 99 and minor 1
-[459812.371159] read messge from channel 6 and minor 0
-[459812.371167] wrote messge from channel 536252608 and minor 1
-[460605.931198] ------------[ cut here ]------------
-[460605.931225] kernel BUG at mm/slub.c:4118!
-[460605.931294] invalid opcode: 0000 [#1] SMP NOPTI
-[460605.931297] CPU: 1 PID: 46934 Comm: rmmod Tainted: G           OEL    5.10.0-21-amd64 #1 Debian 5.10.162-1
-[460605.931298] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
-[460605.931403] RIP: 0010:kfree+0x3d5/0x490
-[460605.931405] Code: e6 ff 4c 8b 04 24 49 8b 00 a8 03 75 5f 65 48 ff 08 e8 cf ae e6 ff 49 89 da e9 08 fd ff ff 48 8b 45 08 a8 01 0f 85 cf fd ff ff <0f> 0b 4c 8d 87 f0 9d 02 00 e9 1f fe ff ff 48 8d b9 f0 9d 02 00 eb
-[460605.931407] RSP: 0018:ffffabd5c34c3e78 EFLAGS: 00010246
-[460605.931409] RAX: ffffd60641af9f48 RBX: ffffffffc0c03500 RCX: 000000008015000d
-[460605.931410] RDX: 0000000000000000 RSI: ffffffffc0c01369 RDI: ffffffffc0c03500
-[460605.931411] RBP: ffffd606412d80c0 R08: 0000000000000001 R09: 0000000000000000
-[460605.931412] R10: 0000000000000001 R11: 0000000000000000 R12: 0000000000000000
-[460605.931413] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
-[460605.931415] FS:  00007f1d15dee540(0000) GS:ffff891c7dd00000(0000) knlGS:0000000000000000
-[460605.931416] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[460605.931418] CR2: 000055cf6fe144c8 CR3: 00000000346ec006 CR4: 00000000000306e0
-[460605.931420] Call Trace:
-[460605.931537]  message_slot_exit+0x2e/0xcc5 [message_slot]
-[460605.931660]  __do_sys_delete_module+0x191/0x300
-[460605.931812]  ? exit_to_user_mode_prepare+0x32/0x160
-[460605.931865]  do_syscall_64+0x30/0x80
-[460605.931927]  entry_SYSCALL_64_after_hwframe+0x61/0xc6
-[460605.931961] RIP: 0033:0x7f1d15f14417
-[460605.931963] Code: 73 01 c3 48 8b 0d 79 1a 0d 00 f7 d8 64 89 01 48 83 c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 b8 b0 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 49 1a 0d 00 f7 d8 64 89 01 48
-[460605.931965] RSP: 002b:00007ffc5c1d7968 EFLAGS: 00000206 ORIG_RAX: 00000000000000b0
-[460605.931967] RAX: ffffffffffffffda RBX: 000055cf6fe09760 RCX: 00007f1d15f14417
-[460605.931968] RDX: 000000000000000a RSI: 0000000000000800 RDI: 000055cf6fe097c8
-[460605.931969] RBP: 0000000000000000 R08: 0000000000000000 R09: 0000000000000000
-[460605.931970] R10: 00007f1d15f94ac0 R11: 0000000000000206 R12: 00007ffc5c1d7b90
-[460605.931971] R13: 00007ffc5c1d9891 R14: 000055cf6fe092a0 R15: 000055cf6fe09760
-[460605.931973] Modules linked in: message_slot(OE-) bnep bluetooth 8021q garp stp mrp llc vboxsf iptable_nat nf_nat jitterentropy_rng nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c drbg ansi_cprng iptable_mangle ecdh_generic iptable_filter rfkill ecc ghash_clmulni_intel aesni_intel libaes crypto_simd snd_intel8x0 snd_ac97_codec ac97_bus snd_pcm joydev cryptd glue_helper pcspkr snd_timer serio_raw snd sg ac soundcore evdev vboxguest parport_pc ppdev lp parport fuse configfs ip_tables x_tables autofs4 ext4 crc16 mbcache jbd2 crc32c_generic hid_generic usbhid hid sd_mod t10_pi crc_t10dif crct10dif_generic sr_mod vmwgfx cdrom ata_generic ttm drm_kms_helper cec ahci libahci ata_piix drm crct10dif_pclmul crct10dif_common ohci_pci libata crc32_pclmul ohci_hcd crc32c_intel scsi_mod psmouse ehci_pci ehci_hcd i2c_piix4 usbcore battery usb_common e1000 video button
-[460605.932567] ---[ end trace 7e270e2a743c0b34 ]---
-[460605.932583] RIP: 0010:kfree+0x3d5/0x490
-[460605.932585] Code: e6 ff 4c 8b 04 24 49 8b 00 a8 03 75 5f 65 48 ff 08 e8 cf ae e6 ff 49 89 da e9 08 fd ff ff 48 8b 45 08 a8 01 0f 85 cf fd ff ff <0f> 0b 4c 8d 87 f0 9d 02 00 e9 1f fe ff ff 48 8d b9 f0 9d 02 00 eb
-[460605.932586] RSP: 0018:ffffabd5c34c3e78 EFLAGS: 00010246
-[460605.932588] RAX: ffffd60641af9f48 RBX: ffffffffc0c03500 RCX: 000000008015000d
-[460605.932589] RDX: 0000000000000000 RSI: ffffffffc0c01369 RDI: ffffffffc0c03500
-[460605.932590] RBP: ffffd606412d80c0 R08: 0000000000000001 R09: 0000000000000000
-[460605.932591] R10: 0000000000000001 R11: 0000000000000000 R12: 0000000000000000
-[460605.932592] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
-[460605.932593] FS:  00007f1d15dee540(0000) GS:ffff891c7dd00000(0000) knlGS:0000000000000000
-[460605.932595] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[460605.932596] CR2: 000055cf6fe144c8 CR3: 00000000346ec006 CR4: 00000000000306e0
+[  736.328902] usb 2-1: USB disconnect, device number 2
+[  736.761819] usb 2-1: new full-speed USB device number 3 using ohci-pci
+[  737.085283] usb 2-1: New USB device found, idVendor=80ee, idProduct=0021, bcdDevice= 1.00
+[  737.085286] usb 2-1: New USB device strings: Mfr=1, Product=3, SerialNumber=0
+[  737.103027] input: VirtualBox USB Tablet as /devices/pci0000:00/0000:00:06.0/usb2/2-1/2-1:1.0/0003:80EE:0021.0002/input/input9
+[  770.053905] device opened - minor 0
+[  770.053936] RIP: 0010:device_ioctl.cold+0x2f/0x7a [message_slot]
+[  770.054085] RIP: 0010:device_ioctl.cold+0x2f/0x7a [message_slot]
+[  824.558338] device opened - minor 0
+[  824.558368] RIP: 0010:device_ioctl.cold+0x2f/0x7a [message_slot]
+[  824.558476] RIP: 0010:device_ioctl.cold+0x2f/0x7a [message_slot]
+[ 1081.902278] usb 2-1: USB disconnect, device number 3
+[ 1082.358663] usb 2-1: new full-speed USB device number 4 using ohci-pci
+[ 1082.681531] usb 2-1: New USB device found, idVendor=80ee, idProduct=0021, bcdDevice= 1.00
+[ 1082.681537] usb 2-1: New USB device strings: Mfr=1, Product=3, SerialNumber=0
+[ 1082.699548] input: VirtualBox USB Tablet as /devices/pci0000:00/0000:00:06.0/usb2/2-1/2-1:1.0/0003:80EE:0021.0003/input/input10
+[ 1845.782887] usb 2-1: USB disconnect, device number 4
+[ 1846.500662] usb 2-1: new full-speed USB device number 5 using ohci-pci
+[ 1847.238825] usb 2-1: New USB device found, idVendor=80ee, idProduct=0021, bcdDevice= 1.00
+[ 1847.238833] usb 2-1: New USB device strings: Mfr=1, Product=3, SerialNumber=0
+[ 1847.472130] input: VirtualBox USB Tablet as /devices/pci0000:00/0000:00:06.0/usb2/2-1/2-1:1.0/0003:80EE:0021.0004/input/input11
+[ 3521.151616] usb 2-1: USB disconnect, device number 5
+[ 3521.642226] usb 2-1: new full-speed USB device number 6 using ohci-pci
+[ 3522.348545] usb 2-1: New USB device found, idVendor=80ee, idProduct=0021, bcdDevice= 1.00
+[ 3522.348642] usb 2-1: New USB device strings: Mfr=1, Product=3, SerialNumber=0
+[ 3522.579797] input: VirtualBox USB Tablet as /devices/pci0000:00/0000:00:06.0/usb2/2-1/2-1:1.0/0003:80EE:0021.0005/input/input12
+[ 3627.137354] device opened - minor 0
+[ 3627.137363] device ioctl created new channel
+[ 3627.137447] device opened - minor 0
+[ 3627.137450] device opened - minor 1
+[ 3627.137452] device ioctl created new channel
+[ 3627.137453] device ioctl created new channel
+[ 3627.137575] device opened - minor 0
+[ 3627.137578] device ioctl found existing channel ID 6
+[ 3627.138055] device opened - minor 0
+[ 3627.138059] device opened - minor 1
+[ 3627.138061] device ioctl found existing channel ID 6
+[ 3645.760916] device opened - minor 0
+[ 3645.760924] device ioctl found existing channel ID 6
+[ 3645.760951] device opened - minor 0
+[ 3645.760955] device opened - minor 1
+[ 3645.760958] device ioctl found existing channel ID 99
+[ 3645.760959] device ioctl found existing channel ID 99
+[ 3645.760985] device opened - minor 0
+[ 3645.760987] device ioctl found existing channel ID 6
+[ 3645.760994] device opened - minor 0
+[ 3645.761040] device opened - minor 1
+[ 3645.761042] device ioctl found existing channel ID 6
+[ 3647.696702] device opened - minor 0
+[ 3647.696712] device ioctl found existing channel ID 6
+[ 3647.696903] device opened - minor 0
+[ 3647.696907] device opened - minor 1
+[ 3647.696909] device ioctl found existing channel ID 99
+[ 3647.696910] device ioctl found existing channel ID 99
+[ 3647.696958] device opened - minor 0
+[ 3647.696960] device ioctl found existing channel ID 6
+[ 3647.696972] device opened - minor 0
+[ 3647.696976] device opened - minor 1
+[ 3647.696978] device ioctl found existing channel ID 6
+[ 3649.207339] device opened - minor 0
+[ 3649.207349] device ioctl found existing channel ID 6
+[ 3649.207382] device opened - minor 0
+[ 3649.207387] device opened - minor 1
+[ 3649.207390] device ioctl found existing channel ID 99
+[ 3649.207391] device ioctl found existing channel ID 99
+[ 3649.207585] device opened - minor 0
+[ 3649.207591] device ioctl found existing channel ID 6
+[ 3649.207629] device opened - minor 0
+[ 3649.207634] device opened - minor 1
+[ 3649.207636] device ioctl found existing channel ID 6
+[ 3881.766265] device opened - minor 0
+[ 3881.766274] device ioctl created new channel
+[ 3881.766525] device opened - minor 0
+[ 3881.766530] device opened - minor 1
+[ 3881.766532] device ioctl created new channel
+[ 3881.766533] device ioctl created new channel
+[ 3881.766653] device opened - minor 0
+[ 3881.766656] device ioctl found existing channel ID 6
+[ 3881.766715] device opened - minor 0
+[ 3881.766719] device opened - minor 1
+[ 3881.766721] device ioctl found existing channel ID 6
+[ 4345.342613] device opened - minor 0
+[ 4345.342621] device ioctl created new channel
+[ 4345.342659] device opened - minor 0
+[ 4345.342704] device opened - minor 1
+[ 4345.342706] device ioctl created new channel
+[ 4345.342707] device ioctl created new channel
+[ 4345.342815] device opened - minor 0
+[ 4345.342818] device ioctl found existing channel ID 6
+[ 4345.342833] device opened - minor 0
+[ 4345.342836] device opened - minor 1
+[ 4345.342837] device ioctl found existing channel ID 6
+[ 4671.712291] device opened - minor 0
+[ 4671.712299] device ioctl created new channel
+[ 4671.712317] device opened - minor 0
+[ 4671.712363] device opened - minor 1
+[ 4671.712365] device ioctl created new channel
+[ 4671.712366] device ioctl created new channel
+[ 4671.712414] device opened - minor 0
+[ 4671.712416] device ioctl found existing channel ID 6
+[ 4671.712427] device opened - minor 0
+[ 4671.712431] device opened - minor 1
+[ 4671.712432] device ioctl found existing channel ID 6
+[ 4966.547403] usb 2-1: USB disconnect, device number 6
+[ 4967.212990] usb 2-1: new full-speed USB device number 7 using ohci-pci
+[ 4967.526254] usb 2-1: New USB device found, idVendor=80ee, idProduct=0021, bcdDevice= 1.00
+[ 4967.526258] usb 2-1: New USB device strings: Mfr=1, Product=3, SerialNumber=0
+[ 4967.547447] input: VirtualBox USB Tablet as /devices/pci0000:00/0000:00:06.0/usb2/2-1/2-1:1.0/0003:80EE:0021.0006/input/input13
+[ 5465.264455] device opened - minor 0
+[ 5465.264462] device_ioctl: minor=0, channel=6
+[ 5465.264462] device ioctl created new channel
+[ 5465.264465] device_write: minor=0 slot=00000000386c2804
+[ 5465.264468] device_write:wrote messge from channel 6 and minor 0 of 12 bytes
+[ 5465.264469] device_read: minor=0 slot=00000000386c2804
+[ 5465.264488] device opened - minor 0
+[ 5465.264492] device opened - minor 1
+[ 5465.264494] device_ioctl: minor=0, channel=99
+[ 5465.264517] device ioctl created new channel
+[ 5465.264518] device_ioctl: minor=1, channel=99
+[ 5465.264519] device ioctl created new channel
+[ 5465.264521] device_write: minor=0 slot=00000000386c2804
+[ 5465.264534] device_write:wrote messge from channel 99 and minor 0 of 4 bytes
+[ 5465.264535] device_write: minor=1 slot=00000000e3aec730
+[ 5465.264537] device_write:wrote messge from channel 99 and minor 1 of 4 bytes
+[ 5465.264538] device_read: minor=0 slot=00000000386c2804
+[ 5465.264540] device_read: minor=1 slot=00000000e3aec730
+[ 5465.264555] device opened - minor 0
+[ 5465.264556] device_ioctl: minor=0, channel=6
+[ 5465.264557] device ioctl found existing channel ID 6
+[ 5465.264558] device_read: minor=0 slot=00000000386c2804
+[ 5465.264562] device opened - minor 0
+[ 5465.264564] device_ioctl: minor=0, channel=6
+[ 5465.264564] device ioctl found existing channel ID 6
+[ 5465.264566] device opened - minor 1
+[ 5465.264568] device_write: minor=1 slot=00000000e3aec730
+[ 5465.264569] device_write:wrote messge from channel 99 and minor 1 of 3 bytes
+[ 5480.996048] device opened - minor 0
+[ 5480.996053] device_ioctl: minor=0, channel=6
+[ 5480.996054] device ioctl found existing channel ID 6
+[ 5480.996057] device_write: minor=0 slot=00000000386c2804
+[ 5480.996098] device_write:wrote messge from channel 6 and minor 0 of 12 bytes
+[ 5480.996100] device_read: minor=0 slot=00000000386c2804
+[ 5480.996175] device opened - minor 0
+[ 5480.996178] device opened - minor 1
+[ 5480.996180] device_ioctl: minor=0, channel=99
+[ 5480.996180] device ioctl found existing channel ID 99
+[ 5480.996182] device_ioctl: minor=1, channel=99
+[ 5480.996182] device ioctl found existing channel ID 99
+[ 5480.996184] device_write: minor=0 slot=00000000386c2804
+[ 5480.996186] device_write:wrote messge from channel 99 and minor 0 of 4 bytes
+[ 5480.996187] device_write: minor=1 slot=00000000e3aec730
+[ 5480.996189] device_write:wrote messge from channel 99 and minor 1 of 4 bytes
+[ 5480.996190] device_read: minor=0 slot=00000000386c2804
+[ 5480.996192] device_read: minor=1 slot=00000000e3aec730
+[ 5480.997249] device opened - minor 0
+[ 5480.997253] device_ioctl: minor=0, channel=6
+[ 5480.997278] device ioctl found existing channel ID 6
+[ 5480.997281] device_read: minor=0 slot=00000000386c2804
+[ 5480.997918] device opened - minor 0
+[ 5480.997921] device_ioctl: minor=0, channel=6
+[ 5480.997922] device ioctl found existing channel ID 6
+[ 5480.997983] device opened - minor 1
+[ 5480.998159] device_write: minor=1 slot=00000000e3aec730
+[ 5480.998162] device_write:wrote messge from channel 99 and minor 1 of 3 bytes
+[ 5486.680406] device opened - minor 0
+[ 5486.680411] device_ioctl: minor=0, channel=6
+[ 5486.680412] device ioctl found existing channel ID 6
+[ 5486.680415] device_write: minor=0 slot=00000000386c2804
+[ 5486.680418] device_write:wrote messge from channel 6 and minor 0 of 12 bytes
+[ 5486.680419] device_read: minor=0 slot=00000000386c2804
+[ 5486.680433] device opened - minor 0
+[ 5486.680436] device opened - minor 1
+[ 5486.680437] device_ioctl: minor=0, channel=99
+[ 5486.680438] device ioctl found existing channel ID 99
+[ 5486.680439] device_ioctl: minor=1, channel=99
+[ 5486.680440] device ioctl found existing channel ID 99
+[ 5486.680441] device_write: minor=0 slot=00000000386c2804
+[ 5486.680443] device_write:wrote messge from channel 99 and minor 0 of 4 bytes
+[ 5486.680444] device_write: minor=1 slot=00000000e3aec730
+[ 5486.680446] device_write:wrote messge from channel 99 and minor 1 of 4 bytes
+[ 5486.680447] device_read: minor=0 slot=00000000386c2804
+[ 5486.680449] device_read: minor=1 slot=00000000e3aec730
+[ 5486.680460] device opened - minor 0
+[ 5486.680462] device_ioctl: minor=0, channel=6
+[ 5486.680462] device ioctl found existing channel ID 6
+[ 5486.680464] device_read: minor=0 slot=00000000386c2804
+[ 5486.680468] device opened - minor 0
+[ 5486.680470] device opened - minor 1
+[ 5486.680471] device_ioctl: minor=0, channel=6
+[ 5486.680471] device ioctl found existing channel ID 6
+[ 5486.680473] device_write: minor=1 slot=00000000e3aec730
+[ 5486.680474] device_write:wrote messge from channel 99 and minor 1 of 3 bytes
