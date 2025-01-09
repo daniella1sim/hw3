@@ -25,7 +25,7 @@ static int device_open(struct inode *inode, struct file *file){
     }
 
     slot = &device_table[minor];
-    file->private_data = slot;
+    file->private_data = slot->channel_list;
     printk(KERN_INFO "device opened - minor %u\n",minor);
     return 0;
 }
@@ -42,9 +42,9 @@ static long device_ioctl(struct file *file, unsigned int ioctl_command_id, unsig
         return -EINVAL;
     }
     
-    slot = file->private_data;
-    
-    chan = slot->channel_list;
+    //slot = file->private_data;
+
+    chan = file->private_data;
     while (chan){
         if (chan->id == channel_id){
             file->private_data = chan;
@@ -55,7 +55,7 @@ static long device_ioctl(struct file *file, unsigned int ioctl_command_id, unsig
     }
 
     chan = kmalloc(sizeof(struct channel), GFP_KERNEL);
-    if (!chan){
+    if (chan == NULL){
         printk(KERN_ERR "Error: unable to allocate memory\n");
             return -ENOMEM;
         }
@@ -72,13 +72,19 @@ static long device_ioctl(struct file *file, unsigned int ioctl_command_id, unsig
 
 static ssize_t device_write(struct file *file, const char __user *buffer, size_t len, loff_t *offset){
     struct channel *chan = file->private_data;
+    int minor =  iminor(file->f_inode);
+
+    if (device_table[minor].channel_list  == NULL){
+        printk(KERN_ERR "Error: device iooctl not set yet\n");
+        return -EINVAL;
+    }
     
-    if (!chan){
+    if (chan == NULL || chan->id == 0){
         printk(KERN_ERR "Error: channel not set correctly\n");
         return -EINVAL;
     } 
     
-    if (!buffer){
+    if (buffer  == NULL){
         printk(KERN_ERR "Error: buffer pointer is NULL\n");
         return -EINVAL;
     }
@@ -102,12 +108,12 @@ static ssize_t device_write(struct file *file, const char __user *buffer, size_t
 static ssize_t device_read(struct file *file, char __user *buffer, size_t len, loff_t *offset){
     struct channel *chan = file->private_data;
     
-    if (!chan){
+    if (chan == NULL || chan->id == 0){
         printk(KERN_ERR "Error: channel not set correctly\n");
         return -EINVAL;
     } 
     
-    if (!buffer){
+    if (buffer == NULL){
         printk(KERN_ERR "Error: buffer pointer is NULL");
         return -EINVAL;
     }
